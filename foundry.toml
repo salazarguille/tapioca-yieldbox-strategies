@@ -13,7 +13,8 @@ optimizer_runs = 9999
 remappings = [
     "tapioca-strategies/=contracts/",
 	"tapioca-sdk/=gitmodule/tapioca-sdk/contracts/",
-    "yieldbox/=lib/tap-yieldbox/contracts/"
+    "yieldbox/=lib/tap-yieldbox/contracts/",
+    "@openzeppelin/=lib/openzeppelin-contracts/"
 ]
 
 
