@@ -21,7 +21,7 @@ abstract contract EthRescuable is Ownable, Errors {
     /**
      * @notice The address of the ETH token
      */
-    address public ETH_TOKEN_ADDRESS =
+    address public constant ETH_TOKEN_ADDRESS =
         0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
 
     /**
@@ -56,6 +56,7 @@ abstract contract EthRescuable is Ownable, Errors {
     function rescueEth(uint256 amount, address to) external onlyOwner {
         if (to == address(0)) revert EmptyAddress();
         if (amount == 0) revert EmptyAmount();
+        // slither-disable-next-line reentrancy-events
         (bool success, ) = to.call{value: amount}("");
         if (!success) revert TransferFailed(ETH_TOKEN_ADDRESS, to, amount);
         emit EthRescued(to, amount);

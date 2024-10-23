@@ -63,6 +63,13 @@ abstract contract Errors {
      */
     error TransferFailed(address _token, address _to, uint256 _amount);
     /**
+     * @notice Emitted when the deposit failed
+     * @param _token the token address
+     * @param _from the sender address
+     * @param _amount the amount
+     */
+    error DepositFailed(address _token, address _from, uint256 _amount);
+    /**
      * @notice Emitted when the withdraw failed
      * @param _vault the vault address
      * @param _to the recipient address

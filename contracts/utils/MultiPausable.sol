@@ -23,7 +23,7 @@ abstract contract MultiPausable is Ownable, Errors {
      * @notice The cluster address
      * @dev It manages the access roles.
      */
-    ICluster public cluster;
+    ICluster public immutable cluster;
 
     /**
      * @notice The pause status for the deposit operations.

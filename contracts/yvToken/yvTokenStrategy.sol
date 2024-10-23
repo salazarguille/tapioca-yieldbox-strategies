@@ -132,6 +132,7 @@ contract yvTokenStrategy is
 
         if (maxWithdraw > 0) {
             // Withdraw the tokens from the yvToken vault
+            // slither-disable-next-line reentrancy-events
             uint256 sharesAmount = yvToken.withdraw(
                 maxWithdraw,
                 address(this),
@@ -205,8 +206,11 @@ contract yvTokenStrategy is
         // If the amount of tokens is greater than the threshold, a deposit operation is performed in the yvToken vault.
         if (queued >= depositThreshold) {
             IERC20 token = asset();
-            token.approve(address(yvToken), queued);
-            yvToken.deposit(queued, address(this));
+            token.safeApprove(address(yvToken), queued);
+            // Since there is no a minShares parameter, we can't check the shares amount to avoid issues.
+            uint256 shares = yvToken.deposit(queued, address(this));
+            // slither-disable-next-line incorrect-equality
+            if (shares == 0) revert DepositFailed(address(yvToken), address(this), queued);
             emit AmountDeposited(queued);
             return;
         }
