@@ -1,0 +1,23 @@
+yvTokenStrategyConstructorTest
+├── when the _yieldBox is empty
+│   └── it should revert
+├── when the _cluster is empty
+│   └── it should revert
+├── when the _yvToken is empty
+│   └── it should revert
+├── when the _owner is empty
+│   └── it should revert
+├── when the depositThreshold is zero
+│   └── it should revert
+├── given token is not empty
+│   └── when the token decimals is not equal to 18
+│       └── it should revert
+└── given _yvToken's asset is not empty
+    ├── when _token is empty
+    │   └── it should revert
+    └── when _token is not empty
+        ├── given _token is equal to _yvToken's asset
+        │   └── it should return a new contract instance
+        │   └── it should transfer the ownership to the owner
+        └── given _token is not equal to _yvToken's asset
+            └── it should revert

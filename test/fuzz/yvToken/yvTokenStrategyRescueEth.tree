@@ -1,0 +1,16 @@
+yvTokenStrategyRescueEthTest
+├── when transaction sender is not the owner
+│   └── it should revert
+├── when transaction sender is the owner
+│   ├── given the amount is greater than zero
+│   │   └── it should transfer the amount to the to address
+│   │   └── it should emit a {EthRescued} event
+│   └── given the amount is zero
+│       └── it should revert
+└── when to address is a contract
+    └── Given the transaction sender is the owner
+        ├── When the call to the contract fails
+        │   └── it should revert
+        └── When the call to the contract succeeds
+            ├── it should transfer the amount to the to address
+            └── it should emit a {EthRescued} event
