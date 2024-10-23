@@ -155,6 +155,8 @@ contract yvTokenStrategyForkTest is ForkUtils {
         vm.assume(_amount2 < type(uint112).max);
         vm.assume(_amount1 + _amount2 < dai.balanceOf(DAI_WHALE));
         vm.assume(_amount1 + _amount2 < yvDAI.deposit_limit());
+        vm.assume(_amount1 + _amount2 < yvDAI.maxDeposit(_user1));
+        vm.assume(_amount1 + _amount2 < yvDAI.maxDeposit(_user2));
 
         _deposit(yieldBox, dai, daiAssetId, _user1, _amount1);
         _deposit(yieldBox, dai, daiAssetId, _user2, _amount2);
