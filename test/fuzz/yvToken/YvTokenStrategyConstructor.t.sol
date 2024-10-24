@@ -9,6 +9,19 @@ import {MockDecimalsERC20} from "../../../contracts/mocks/MockDecimalsERC20.sol"
 import {MockERC4626} from "../../../contracts/mocks/MockERC4626.sol";
 import {IVault} from "../../../contracts/interfaces/yearnv3/IVault.sol";
 
+/*
+████████╗ █████╗ ██████╗ ██╗ ██████╗  ██████╗ █████╗ 
+╚══██╔══╝██╔══██╗██╔══██╗██║██╔═══██╗██╔════╝██╔══██╗
+   ██║   ███████║██████╔╝██║██║   ██║██║     ███████║
+   ██║   ██╔══██║██╔═══╝ ██║██║   ██║██║     ██╔══██║
+   ██║   ██║  ██║██║     ██║╚██████╔╝╚██████╗██║  ██║
+   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝
+*/
+/**
+ * @title YvTokenStrategyConstructorTest
+ * @author Guillermo Salazar
+ * @notice Tests the YvTokenStrategy.constructor.
+ */
 contract YvTokenStrategyConstructorTest is Test {
     IERC20 public token;
     IVault public yvToken;

@@ -18,6 +18,19 @@ import {EthRescuable} from "../../../contracts/utils/EthRescuable.sol";
 import {NoTransferEthContract} from "../utils/NoTransferEthContract.sol";
 import {TransferEthContract} from "../utils/TransferEthContract.sol";
 
+/*
+████████╗ █████╗ ██████╗ ██╗ ██████╗  ██████╗ █████╗ 
+╚══██╔══╝██╔══██╗██╔══██╗██║██╔═══██╗██╔════╝██╔══██╗
+   ██║   ███████║██████╔╝██║██║   ██║██║     ███████║
+   ██║   ██╔══██║██╔═══╝ ██║██║   ██║██║     ██╔══██║
+   ██║   ██║  ██║██║     ██║╚██████╔╝╚██████╗██║  ██║
+   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝
+*/
+/**
+ * @title YvTokenStrategyConstructorTest
+ * @author Guillermo Salazar
+ * @notice Tests the YvTokenStrategy.rescueEth.
+ */
 contract YvTokenStrategyRescueEthTest is Test {
     using Address for address;
     YvTokenStrategy public strategy;
