@@ -85,6 +85,7 @@ contract YvTokenStrategyRescueEthTest is Test {
     ) external whenTransactionSenderIsTheOwner {
         vm.assume(_amount > 0);
         vm.assume(_to != address(0));
+        vm.assume(_to != address(0x0000000000000000000000000000000000000009)); // Pre-compiled contract
         vm.assume(!_to.isContract());
         uint256 toBalanceBefore = _to.balance;
 
