@@ -11,3 +11,7 @@
 [submodule "gitmodule/tapioca-sdk"]
 	path = gitmodule/tapioca-sdk
 	url = https://github.com/Tapioca-DAO/tapioca-sdk
+[submodule "lib/openzeppelin-contracts"]
+	path = lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
+	branch = v4.9.3

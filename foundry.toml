@@ -13,10 +13,16 @@ optimizer_runs = 9999
 remappings = [
     "tapioca-strategies/=contracts/",
 	"tapioca-sdk/=gitmodule/tapioca-sdk/contracts/",
-    "yieldbox/=lib/tap-yieldbox/contracts/"
+    "yieldbox/=lib/tap-yieldbox/contracts/",
+    "@openzeppelin/=lib/openzeppelin-contracts/"
 ]
 
 
 [etherscan]
 arbitrum = { key = "${ETHERSCAN_API_KEY}", url = "https://api.arbiscan.io/api"}
 arbitrum-sepolia = { key = "${ETHERSCAN_API_KEY}", url = "https://api-sepolia.arbiscan.io/api"}
+
+[profile.default.invariant]
+fail_on_revert = false
+runs = 100
+depth = 10
