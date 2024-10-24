@@ -9,7 +9,7 @@ import {IWrappedNative} from "yieldbox/interfaces/IWrappedNative.sol";
 import {IStrategy} from "yieldbox/interfaces/IStrategy.sol";
 import {Pearlmit} from "tap-utils/pearlmit/Pearlmit.sol";
 import {YieldBoxURIBuilder} from "yieldbox/YieldBoxURIBuilder.sol";
-import {yvTokenStrategy} from "../../../contracts/yvToken/yvTokenStrategy.sol";
+import {YvTokenStrategy} from "../../../contracts/yvToken/YvTokenStrategy.sol";
 import {YieldBox} from "yieldbox/YieldBox.sol";
 import {Errors} from "../../../contracts/utils/Errors.sol";
 import {MockERC20} from "../../../contracts/mocks/MockERC20.sol";
@@ -18,9 +18,9 @@ import {EthRescuable} from "../../../contracts/utils/EthRescuable.sol";
 import {NoTransferEthContract} from "../utils/NoTransferEthContract.sol";
 import {TransferEthContract} from "../utils/TransferEthContract.sol";
 
-contract yvTokenStrategyRescueEthTest is Test {
+contract YvTokenStrategyRescueEthTest is Test {
     using Address for address;
-    yvTokenStrategy public strategy;
+    YvTokenStrategy public strategy;
     address public owner;
 
     function setUp() external {
@@ -35,7 +35,7 @@ contract yvTokenStrategyRescueEthTest is Test {
         IERC20 token = IERC20(address(new MockERC20("MockToken", "MT")));
         IERC4626 yvToken = new MockERC4626(token);
         vm.startPrank(owner);
-        strategy = new yvTokenStrategy(
+        strategy = new YvTokenStrategy(
             address(yieldBox),
             address(0x666666666666),
             address(token),

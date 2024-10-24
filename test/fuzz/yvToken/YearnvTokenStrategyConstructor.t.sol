@@ -3,13 +3,13 @@ pragma solidity 0.8.22;
 
 import {Test} from "forge-std/Test.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {yvTokenStrategy} from "../../../contracts/yvToken/yvTokenStrategy.sol";
+import {YvTokenStrategy} from "../../../contracts/yvToken/YvTokenStrategy.sol";
 import {Errors} from "../../../contracts/utils/Errors.sol";
 import {MockDecimalsERC20} from "../../../contracts/mocks/MockDecimalsERC20.sol";
 import {MockERC4626} from "../../../contracts/mocks/MockERC4626.sol";
 import {IVault} from "../../../contracts/interfaces/yearnv3/IVault.sol";
 
-contract yvTokenStrategyConstructorTest is Test {
+contract YvTokenStrategyConstructorTest is Test {
     IERC20 public token;
     IVault public yvToken;
 
@@ -33,7 +33,7 @@ contract yvTokenStrategyConstructorTest is Test {
         address yieldBox = address(0);
 
         vm.expectRevert(abi.encodeWithSelector(Errors.AddressNotValid.selector, yieldBox));
-        new yvTokenStrategy(yieldBox, _cluster, _token, _yvToken, _owner, _depositThreshold);
+        new YvTokenStrategy(yieldBox, _cluster, _token, _yvToken, _owner, _depositThreshold);
     }
 
     function test_RevertWhen_The_clusterIsEmpty(
@@ -51,7 +51,7 @@ contract yvTokenStrategyConstructorTest is Test {
         address cluster = address(0);
 
         vm.expectRevert(abi.encodeWithSelector(Errors.AddressNotValid.selector, cluster));
-        new yvTokenStrategy(_yieldBox, cluster, _token, _yvToken, _owner, _depositThreshold);
+        new YvTokenStrategy(_yieldBox, cluster, _token, _yvToken, _owner, _depositThreshold);
     }
 
     function test_RevertWhen_The_yvTokenIsEmpty(
@@ -71,7 +71,7 @@ contract yvTokenStrategyConstructorTest is Test {
         address _yvToken = address(0);
 
         vm.expectRevert(abi.encodeWithSelector(Errors.TokenNotValid.selector, _yvToken));
-        new yvTokenStrategy(_yieldBox, _cluster, _token, _yvToken, _owner, _depositThreshold);
+        new YvTokenStrategy(_yieldBox, _cluster, _token, _yvToken, _owner, _depositThreshold);
     }
 
     function test_RevertWhen_The_ownerIsEmpty(
@@ -89,7 +89,7 @@ contract yvTokenStrategyConstructorTest is Test {
         address owner = address(0);
 
         vm.expectRevert(abi.encodeWithSelector(Errors.AddressNotValid.selector, owner));
-        new yvTokenStrategy(_yieldBox, _cluster, _token, _yvToken, owner, _depositThreshold);
+        new YvTokenStrategy(_yieldBox, _cluster, _token, _yvToken, owner, _depositThreshold);
     }
 
     function test_RevertWhen_TheDepositThresholdIsZero(address _yieldBox, address _cluster, address _owner) external {
@@ -99,7 +99,7 @@ contract yvTokenStrategyConstructorTest is Test {
         uint256 _depositThreshold = 0;
 
         vm.expectRevert(abi.encodeWithSelector(Errors.AmountNotValid.selector, _depositThreshold));
-        new yvTokenStrategy(_yieldBox, _cluster, address(token), address(yvToken), _owner, _depositThreshold);
+        new YvTokenStrategy(_yieldBox, _cluster, address(token), address(yvToken), _owner, _depositThreshold);
     }
 
     modifier givenTokenIsNotEmpty() {
@@ -124,7 +124,7 @@ contract yvTokenStrategyConstructorTest is Test {
         address _yvToken = address(new MockERC4626(IERC20(_token)));
 
         vm.expectRevert(abi.encodeWithSelector(Errors.ValueNotValid.selector, _decimals));
-        new yvTokenStrategy(_yieldBox, _cluster, _token, _yvToken, _owner, _depositThreshold);
+        new YvTokenStrategy(_yieldBox, _cluster, _token, _yvToken, _owner, _depositThreshold);
     }
 
     modifier given_yvTokensAssetIsNotEmpty() {
@@ -144,7 +144,7 @@ contract yvTokenStrategyConstructorTest is Test {
         address _token = address(0);
 
         vm.expectRevert(abi.encodeWithSelector(Errors.TokenNotValid.selector, _token));
-        new yvTokenStrategy(
+        new YvTokenStrategy(
             _yieldBox,
             _cluster,
             _token,
@@ -170,7 +170,7 @@ contract yvTokenStrategyConstructorTest is Test {
         vm.assume(_depositThreshold > 0);
 
         vm.startPrank(_owner);
-        yvTokenStrategy strategy = new yvTokenStrategy(
+        YvTokenStrategy strategy = new YvTokenStrategy(
             _yieldBox,
             _cluster,
             address(token),
@@ -203,7 +203,7 @@ contract yvTokenStrategyConstructorTest is Test {
         vm.assume(_depositThreshold > 0);
 
         vm.expectRevert(abi.encodeWithSelector(Errors.TokensNotMatch.selector, address(token), _token));
-        new yvTokenStrategy(
+        new YvTokenStrategy(
             _yieldBox,
             _cluster,
             _token,

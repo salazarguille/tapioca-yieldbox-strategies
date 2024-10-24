@@ -21,14 +21,14 @@ import {Errors} from "../utils/Errors.sol";
    ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝
 */
 /**
- * @title yvTokenStrategy
+ * @title YvTokenStrategy
  * @author Guillermo Salazar
  * @notice Strategy contract for yvToken (Yearn v3 vaults).
  * @dev This contract allows to deposit and withdraw tokens from the yvToken vault.
  * @dev The contract is pausable for the deposit and withdraw operations.
  * @dev This is not required but the contract allows to rescue ETH from the contract. A use case could be when the contract receives ETH by mistake.
  */
-contract yvTokenStrategy is
+contract YvTokenStrategy is
     BaseERC20Strategy,
     Errors,
     MultiPausable,

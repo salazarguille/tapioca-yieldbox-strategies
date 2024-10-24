@@ -1,4 +1,4 @@
-yvTokenStrategyRescueEthTest
+YvTokenStrategyRescueEthTest
 ├── when transaction sender is not the owner
 │   └── it should revert
 ├── when transaction sender is the owner

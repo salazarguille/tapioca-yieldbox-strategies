@@ -1,4 +1,4 @@
-yvTokenStrategyConstructorTest
+YvTokenStrategyConstructorTest
 ├── when the _yieldBox is empty
 │   └── it should revert
 ├── when the _cluster is empty

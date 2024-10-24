@@ -8,7 +8,7 @@ import {YieldBox, TokenType} from "yieldbox/YieldBox.sol";
 import {YieldBoxURIBuilder} from "yieldbox/YieldBoxURIBuilder.sol";
 import {Pearlmit} from "tap-utils/pearlmit/Pearlmit.sol";
 import {Cluster} from "tap-utils/Cluster/Cluster.sol";
-import {yvTokenStrategy} from "../../../contracts/yvToken/yvTokenStrategy.sol";
+import {YvTokenStrategy} from "../../../contracts/yvToken/YvTokenStrategy.sol";
 import {IVault} from "../../../contracts/interfaces/yearnv3/IVault.sol";
 import {ForkUtils} from "../utils/ForkUtils.sol";
 
@@ -21,20 +21,20 @@ import {ForkUtils} from "../utils/ForkUtils.sol";
    ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝
 */
 /**
- * @title yvTokenStrategyForkTest
+ * @title YvTokenStrategyForkTest
  * @author Guillermo Salazar
- * @notice Tests for the yvTokenStrategy contract forking Ethereum mainnet.
- * @dev The tests were created to validate the yvTokenStrategy contract on the Ethereum mainnet fork. It tests:
+ * @notice Tests for the YvTokenStrategy contract forking Ethereum mainnet.
+ * @dev The tests were created to validate the YvTokenStrategy contract on the Ethereum mainnet fork. It tests:
  * - A valid deposit
  * - A valid withdraw
  * - A valid emergency withdraw
  */
-contract yvTokenStrategyForkTest is ForkUtils {
+contract YvTokenStrategyForkTest is ForkUtils {
     uint256 public forkId;
     address public owner;
     address public weth;
     YieldBox public yieldBox;
-    yvTokenStrategy public strategy;
+    YvTokenStrategy public strategy;
     uint256 public initialDepositThreshold;
     IERC20 public dai;
     IVault public yvDAI;
@@ -66,7 +66,7 @@ contract yvTokenStrategyForkTest is ForkUtils {
             address(this)
         );
         // Deploy strategy
-        strategy = new yvTokenStrategy(
+        strategy = new YvTokenStrategy(
             address(yieldBox),
             address(cluster),
             address(dai),
